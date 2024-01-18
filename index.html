@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cs1300 AB Testing</title>
+
+    <script src="download-utils.js"></script>
+    <script defer>
+        // redirect user to either A or B, on click of start button
+        const redirectAB = () => {
+            // initialize local storage to store data, if not there
+            const data = localStorage.getItem("cs1300-ab-testing-data");
+            if (data == null) {
+                console.log('setting storage')
+                localStorage.setItem("cs1300-ab-testing-data", JSON.stringify([]));
+            }
+
+            location.href = Math.random() > .5 ? "a.html" : "b.html";
+        };
+
+        const downloadAB = () => {
+            // get the data from local storage, ensure not nullish
+            let data = localStorage.getItem("cs1300-ab-testing-data");
+            data = JSON.parse(data);
+            if (!data) {
+                alert("Error: local storage is corrupted or empty!");
+                console.error("Error: local storage is corrupted or empty!");
+                localStorage.clear();
+                return;
+            }
+
+            const csv = buildcsv(data);
+            download(csv);
+
+            // clear local storage for future uses
+            localStorage.clear();
+        }
+    </script>
+</head>
+<body>
+<h2>
+    cs1300 AB Testing Start Screen
+</h2>
+<p>
+    <strong>Task: </strong> On the next page, do XYZ...
+</p>
+<button onclick="redirectAB()">Start Task</button>
+<br />
+<br />
+<button onclick="downloadAB()">Download & Clear Current Data</button>
+</body>
+</html>
