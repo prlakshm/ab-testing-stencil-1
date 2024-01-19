@@ -61,7 +61,7 @@ const recordData = () => {
     const time_on_page = timestamp_unload - timestamp_load;
 
     // update localstorage
-    data.push({uid, version, timestamp_load, time_on_page, time_to_first_click, mouse_move_distance, did_misclick});
+    data.push({uid, version, timestamp_load, time_on_page, time_to_first_click, mouse_move_distance, num_clicks, did_misclick});
     localStorage.setItem("cs1300-ab-testing-data", JSON.stringify(data));
 }
 
