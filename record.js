@@ -6,6 +6,7 @@ let num_clicks = 0;
 let timestamp_load;
 let timestamp_first_click;
 let did_misclick = false;
+let did_succeed = false;
 let mouse_move_distance = 0;
 let mouse_prev_pos;
 
@@ -61,7 +62,7 @@ const recordData = () => {
     const time_on_page = timestamp_unload - timestamp_load;
 
     // update localstorage
-    data.push({uid, version, timestamp_load, time_on_page, time_to_first_click, mouse_move_distance, num_clicks, did_misclick});
+    data.push({uid, version, timestamp_load, time_on_page, time_to_first_click, mouse_move_distance, num_clicks, did_misclick, did_succeed});
     localStorage.setItem("cs1300-ab-testing-data", JSON.stringify(data));
 }
 
@@ -70,6 +71,9 @@ const suc = event => {
     // record this event
     recordAction(event);
     alert("You succeeded in the task :)");
+
+    // update succeed flag
+    did_succeed = true;
 
     // redirect user to home
     location.href = 'index.html';
