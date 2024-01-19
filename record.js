@@ -83,10 +83,11 @@ const fail = event => {
     did_misclick = true;
 }
 
+// section for adding/removing handlers
 const cleanupHandlers = () => {
     window.removeEventListener('load', recordAction);
     window.removeEventListener('click', recordAction);
-    window.addEventListener('pointermove', recordAction);
+    window.removeEventListener('pointermove', recordAction);
     window.removeEventListener('beforeunload', recordAction);
 }
 
