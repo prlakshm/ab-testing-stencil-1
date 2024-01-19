@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>cs1300 AB Testing</title>
 
-    <script src="download-utils.js"></script>
+    <script src="download-utils.js" defer></script>
     <script defer>
         // redirect user to either A or B, on click of start button
         const redirectAB = () => {
@@ -15,7 +15,11 @@
                 localStorage.setItem("cs1300-ab-testing-data", JSON.stringify([]));
             }
 
-            location.href = Math.random() > .5 ? "a.html" : "b.html";
+            // location.href = "a.html"; // NOTE: FOR TAs, uncomment this and comment the next line.
+            location.href = "b.html"; // students only use B.
+
+            // normally, you'd use the following line in a "true" AB test:
+            // location.href = Math.random() > .5 ? "a.html" : "b.html";
         };
 
         const downloadAB = () => {
