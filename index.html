@@ -1,3 +1,7 @@
+<!--
+    @ STUDENTS: DO NOT MODIFY THIS FILE!
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +33,13 @@
 
     <script src="download-utils.js" defer></script>
     <script defer>
-        // redirect user to either A or B, on click of start button
+        // On load, update the select version input to reflect most recently selected version
+        onload = () =>
+            document.querySelector('#version-selector').value
+            = localStorage.getItem('cs1300-ab-testing-version') ?? 'B'; // default to B
+
+
+        // redirect user to either A or B, on click of start buttons
         const redirectAB = () => {
             // initialize local storage to store data, if not there
             const data = localStorage.getItem("cs1300-ab-testing-data");
@@ -38,11 +48,21 @@
                 localStorage.setItem("cs1300-ab-testing-data", JSON.stringify([]));
             }
 
-            // location.href = "a.html"; // NOTE: FOR TAs, uncomment this and comment the next line.
-            location.href = "b.html"; // students only use B.
-
-            // normally, you'd use the following line in a "true" AB test:
-            // location.href = Math.random() > .5 ? "a.html" : "b.html";
+            // get the correct inputted version inside
+            const {value: version} = document.querySelector('#version-selector');
+            // update local storage upon return
+            localStorage.setItem('cs1300-ab-testing-version', version);
+            switch (version) {
+                case 'B':
+                    location.href = "b.html";
+                    break;
+                case 'A':
+                    location.href = "a.html";
+                    break;
+                default:
+                    location.href = Math.random() > .5 ? "a.html" : "b.html";
+                    break;
+            }
         };
 
         const downloadAB = () => {
@@ -69,11 +89,20 @@
         cs1300 AB Testing Start Screen
     </h2>
     <p>
-        <strong>Task: </strong> On the next page, do XYZ...
+        <strong>Task: </strong> Schedule an appointment with Adam Ng, MD at Morristown Medical Center on April 23, 2024
     </p>
     <button onclick="redirectAB()">Start Task</button>
     <br />
     <br />
     <button onclick="downloadAB()">Download & Clear Current Data</button>
+    <br />
+    <br />
+    <label>
+        <select id="version-selector">
+            <option value="B">Version B (for students)</option>
+            <option value="A">Version A (for TA)</option>
+            <option value="R">Random (for real-world)</option>
+        </select>
+    </label>
 </body>
 </html>

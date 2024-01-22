@@ -1,3 +1,11 @@
+/*
+    Author: sotech117
+    License: Educational under Brown University
+    Date: 1/22/24
+ */
+
+// @ STUDENTS: DO NOT MODIFY THIS FILE!!
+
 // generate a random UID for this user, on page load.
 const UID = Math.round(Math.random() * 1000000);
 

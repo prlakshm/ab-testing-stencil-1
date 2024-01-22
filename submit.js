@@ -3,7 +3,6 @@ window.addEventListener("DOMContentLoaded", () => {
     const openDialog = document.getElementById("working-button");
     if (openDialog) {
         openDialog.addEventListener("click", () => {
-            console.log("hi");
             dialog.showModal();
         });
     }

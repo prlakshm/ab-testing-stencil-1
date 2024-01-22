@@ -1,3 +1,9 @@
+/*
+    Author: sotech117
+    License: Educational under Brown University
+    Date: 1/22/24
+ */
+
 // citation: https://www.geeksforgeeks.org/how-to-create-and-download-csv-file-in-javascript/
 
 // performs a downloadUtils of a csv file, given a string buffer in the format of csv text
