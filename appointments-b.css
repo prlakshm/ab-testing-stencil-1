@@ -17,6 +17,7 @@
     src: url(fonts/PPNeueMontreal-Thin.otf);
 }
 
+
 .appointments-container {
     display: flex;
     flex-direction: column;
@@ -31,7 +32,7 @@
 .appointments-container-name {
     font-size: 20px;
     font-family: 'PPNeueMontrealBook';
-    color: #868686;
+    color: #464646;
     margin-top: 0;
     margin-bottom: 12px;
 }
@@ -49,6 +50,8 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 15px;
+    padding: 1rem 2rem;
+    border: 1px solid #464646;
 }
 
 .appointment-date {
@@ -92,16 +95,42 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding-left: 45%;
+    padding-left: 40%;
 
 .defunct-button, .working-button {
-    background-color: #D4E8FF;
-    border: none;
+    background-color: #acd0fa;
     border-radius: 9px;
     width: 180px;
     height: 45px;
+    color: #464646;
+    font-size: 1rem;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px #a9d1ff,
+                0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.defunct-button-2 {
+    background-color: #9ed69e;
+    border-radius: 9px;
+    width: 180px;
+    height: 45px;
+    color: #464646;
+    font-size: 1rem;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px #9ed69e,
+                0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.defunct-button:hover, .working-button:hover,
+.defunct-button:active, .working-button:active {
+    background-color: #6495ED;
     color: white;
 }
+.defunct-button-2:hover,
+.defunct-button-2:active {
+    background-color: #76bc76;
+    color: white;
+}
+
+
 }
 
 .success-dialog {
@@ -121,7 +150,7 @@
     margin-top: 10px;
     width: 150px;
     border: none;
-    background-color: #D4E8FF;
+    background-color: #6495ED;
     border-radius: 9px;
     padding: 14px 21px 14px 21px;
     color: white;
